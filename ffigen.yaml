@@ -1,0 +1,45 @@
+# Run with `flutter pub run ffigen --config ffigen.yaml`.
+name: FlutterPjsipBindings
+description: |
+  Bindings for `src/flutter_pjsip.h`.
+
+  Regenerate bindings with `flutter pub run ffigen --config ffigen.yaml`.
+output: 'lib/flutter_pjsip_bindings_generated.dart'
+headers:
+  entry-points:
+    - 'src/flutter_pjsip.h'
+    - "src/pjsip/pjsip/include/pjsua-lib/pjsua.h"
+  include-directives:
+    - 'src/flutter_pjsip.h'
+    - "src/pjsip/pjsip/include/pjsua-lib/pjsua.h"
+
+compiler-opts:
+    - "-Isrc/pjsip/pjsip/include"
+    - "-Isrc/pjsip/pjlib/include"
+    - "-Isrc/pjsip/pjlib-util/include"
+    - "-Isrc/pjsip/pjmedia/include"
+    - "-Isrc/pjsip/pjnath/include"
+    - "-DPJ_IS_LITTLE_ENDIAN 1"
+    - "-DPJ_IS_BIG_ENDIAN 0"
+structs:
+  rename:
+    # We should rename the struct 'param' to avoid conflict with the class the field 'param' of the class 'pjmedia_codec_fmtp'.
+    # typedef struct pjmedia_codec_fmtp
+    #   {
+    #     pj_uint8_t      cnt;            /**< Number of parameters.          */
+    #     struct param {
+    #       pj_str_t    name;           /**< Parameter name.                */
+    #       pj_str_t    val;            /**< Parameter value.               */
+    #     } param [PJMEDIA_CODEC_MAX_FMTP_CNT]; /**< The parameters.          */
+    #   } pjmedia_codec_fmtp;
+    # It produces class named 'param' which conflicts with the field name 'param' of the class 'pjmedia_codec_fmtp'.
+    # final class param extends ffi.Struct ...
+    "param": "the_param"
+
+preamble: |
+  // ignore_for_file: always_specify_types
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+comments:
+  style: any
+  length: full

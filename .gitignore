@@ -27,3 +27,14 @@ migrate_working_dir/
 **/doc/api/
 .dart_tool/
 build/
+
+# Generated files
+*_generated.dart
+
+# Working directories
+src/pjsip
+target
+
+# Compiled libraries
+ios/Frameworks
+android/libs

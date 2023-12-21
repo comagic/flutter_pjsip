@@ -1,7 +1,7 @@
 name: flutter_pjsip
-description: "A new Flutter FFI plugin project."
+description: "PJSIP plugin for Flutter"
 version: 0.0.1
-homepage:
+homepage: https://github.com/comagic/flutter_pjsip
 
 environment:
   sdk: '>=3.2.3 <4.0.0'

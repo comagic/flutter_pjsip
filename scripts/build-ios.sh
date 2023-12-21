@@ -1,8 +1,5 @@
 #!/bin/sh
-# TODO: can't use set -euo pipefail because of errors while building
-# Makefile:1: build.mak: No such file or directory
-# Makefile:2: build/host-.mak: No such file or directory
-# set -euo pipefail
+set -euo pipefail
 
 # Clean target directory
 rm -rf target/ios
@@ -20,8 +17,8 @@ cd src/pjsip
 find . -type f -name "*.a" -delete
 
 # Make iOS libraries
-make clean
 MIN_IOS="-miphoneos-version-min=13.0" ./configure-iphone
+make clean
 make dep && make clean && make
 
 # Copy iOS libraries
@@ -31,13 +28,13 @@ export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimula
 find . -type f -name "*.a" -delete
 
 # Make arm64 iOS Simulator libraries
-make clean
 ARCH="-arch arm64" CFLAGS="-O2 -m64" LDFLAGS="-O2 -m64" MIN_IOS="-mios-simulator-version-min=13.0" ./configure-iphone
+make clean
 make dep && make clean && make
 
 # Make x86_64 iOS Simulator libraries
-make clean
 ARCH="-arch x86_64" CFLAGS="-O2 -m64" LDFLAGS="-O2 -m64" MIN_IOS="-mios-simulator-version-min=13.0" ./configure-iphone
+make clean
 make dep && make clean && make
 
 make clean

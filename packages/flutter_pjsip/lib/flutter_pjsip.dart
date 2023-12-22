@@ -6,8 +6,10 @@ import 'dart:isolate';
 import 'flutter_pjsip_bindings_generated.dart';
 
 void pjStart() {
+  // ignore: avoid_print
   print('pjStart:');
   var a = _bindings.pjsua_create();
+  // ignore: avoid_print
   print('pjsua_create returns $a');
 }
 

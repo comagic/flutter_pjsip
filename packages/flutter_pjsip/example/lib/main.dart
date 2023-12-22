@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs
+
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_pjsip/flutter_pjsip.dart' as flutter_pjsip;
 
 void main() {
@@ -42,8 +44,10 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               children: [
                 const Text(
-                  'This calls a native function through FFI that is shipped as source in the package. '
-                  'The native code is built as part of the Flutter Runner build.',
+                  'This calls a native function through FFI that is shipped as '
+                  'source in the package. '
+                  'The native code is built as part of the Flutter Runner '
+                  'build.',
                   style: textStyle,
                   textAlign: TextAlign.center,
                 ),

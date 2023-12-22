@@ -8,9 +8,10 @@ find . -type f -name "*.gen.dart" -delete
 find . -type f -name "*.reflectable.dart" -delete
 find . -type f -name "*.module.dart" -delete
 
-rm -rf src/pjsip
+rm -rf packages/flutter_pjsip/src/pjsip
 
-rm -rf target
+rm -rf packages/flutter_pjsip/target
 
-rm -rf android/libs
-rm -rf ios/Frameworks
+rm -rf packages/flutter_pjsip/android/libs
+rm -rf packages/flutter_pjsip/ios/Frameworks
+

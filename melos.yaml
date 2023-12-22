@@ -1,0 +1,40 @@
+name: my_project
+
+packages:
+  - packages/**
+  - .
+
+scripts:
+  get-pjsip:
+    description: Analyze the project
+    run: bash scripts/get-pjsip.sh
+
+  gen-ffi-bindings:
+    description: Generate FFI bindings
+    run: bash scripts/gen-ffi-bindings.sh
+
+  build-ios:
+    description: Build the project for iOS
+    run: bash scripts/build-ios.sh
+
+  build-android:
+    description: Build the project for Android
+    run: bash scripts/build-android.sh
+
+  build:
+    description: Build the project
+    run: melos build-ios && melos build-android
+
+  prepare:
+    description: Prepare the project for hacking
+    run: melos bs && melos get-pjsip && melos gen-ffi-bindings && melos build
+
+  analyze:
+    description: Analyze the project
+    exec: flutter analyze
+    failFast: true
+
+command:
+  clean:
+    hooks:
+      post: bash scripts/clean.sh

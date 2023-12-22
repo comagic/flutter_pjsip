@@ -1,6 +1,8 @@
 #!/bin/sh
 set -euo pipefail
 
+cd packages/flutter_pjsip
+
 PJSIP_VERSION="2.14"
 # TODO: Actually github prefer to use REST API to get a release:
 # https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-a-release

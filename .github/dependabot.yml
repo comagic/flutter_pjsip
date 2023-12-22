@@ -14,6 +14,10 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: pub
-    directory: "/example"
+    directory: "/packages/flutter_pjsip"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: pub
+    directory: "/packages/flutter_pjsip/example"
     schedule:
       interval: "daily"

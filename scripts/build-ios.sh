@@ -1,6 +1,8 @@
 #!/bin/sh
 set -euo pipefail
 
+cd packages/flutter_pjsip
+
 # Clean target directory
 rm -rf target/ios
 

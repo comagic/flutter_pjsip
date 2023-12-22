@@ -15,15 +15,17 @@ Documentation for the API will be available later. TODO: Add link to API docs.
 
 ## Getting started as hacker
 
+TODO: Move hacker's guide to separate document and add link to it here.
+
 This project based on Flutter
 [FFI plugin](https://docs.flutter.dev/development/platform-integration/c-interop),
 a specialized package that includes native code directly invoked with Dart FFI.
 
+## Melos magic
+
 For simplicity we use [Melos](https://pub.dev/packages/melos) to manage
 multi-package project. Melos is a Dart tool for managing Dart projects with
 multiple packages, inspired by Lerna for JavaScript.
-
-## Melos magic
 
 ### Install melos
 
@@ -31,7 +33,7 @@ multiple packages, inspired by Lerna for JavaScript.
 dart pub global activate melos
 ```
 
-### Prepare the project for hacking
+### Prepare the project for hacking: easy way
 
 By running the following command, melos will boostrap the project, get PJSIP source code, generate FFI bindings, and build PJSIP for all platforms:
 
@@ -39,7 +41,7 @@ By running the following command, melos will boostrap the project, get PJSIP sou
 melos prepare
 ```
 
-### Install dependencies
+### Prepare the project for hacking: step by step
 
 Alternatively, you can execute prepare steps one by one. First, you need to install dependencies for all packages:
 
@@ -49,21 +51,19 @@ melos bs
 
 Here `bs` means `bootstrap`.
 
-### Get PJSIP source code
+Then you need to get PJSIP source code:
 
 ```bash
 melos run get-pjsip
 ```
 
-### Generate FFI bindings
+Next step is to generate FFI bindings:
 
 ```bash
 melos run gen-ffi-bindings
 ```
 
-### Build PJSIP
-
-You can build PJSIP for all platforms at once or for a specific platform:
+Now you ready to build the project. You can build PJSIP for all platforms at once or for a specific platform:
 
 ```bash
 # All platforms:
@@ -76,13 +76,15 @@ melos run build-android
 
 ### Analyze all packages
 
+Before committing your changes, you **should** run static analysis for all packages:
+
 ```bash
 melos run analyze
 ```
 
 ### Clean up everything
 
-This will clean up all packages and remove all generated files:
+In case of any issues, you can clean up everything and start from scratch. This will clean up all packages and remove all generated files:
 
 ```bash
 melos clean

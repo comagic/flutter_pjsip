@@ -63,39 +63,75 @@ Here `bs` means `bootstrap`.
 Then you need to get PJSIP source code:
 
 ```bash
-melos run get-pjsip
+melos get-pjsip
 ```
 
 Next step is to generate FFI bindings:
 
 ```bash
-melos run gen-ffi-bindings
+melos gen-ffi-bindings
 ```
 
 Now you ready to build the project. You can build PJSIP for all platforms at once or for a specific platform:
 
 ```bash
 # All platforms:
-melos run build
+melos build
 # iOS:
-melos run build-ios
+melos build-ios
 # Android:
-melos run build-android
+melos build-android
 ```
 
-### Analyze all packages
+### Analyze and test all packages
 
-Before committing your changes, you **should** run static analysis for all packages:
+Before committing your changes, you **should** run static analysis and all tests for all packages:
 
 ```bash
-melos run analyze
+melos check-all
 ```
 
-### Publish packages
-
-To publish all packages, you need to run the following command:
+Alternatively, you can run static analysis and tests for a all packages:
 
 ```bash
+# Static analysis:
+melos analyze
+# Tests:
+melos test
+```
+
+Also you can run test separately:
+
+```bash
+# Dart tests (but there is no Dart tests yet):
+melos test-dart
+# Flutter tests
+melos test-flutter
+# Integration tests
+melos test-integration
+```
+
+Intergation tests can be run **on one of you devices**! So, make sure that you have at least one device connected to your computer. If you have multiple devices connected, you can specify device ID (elsewise, you will get 'More than one device connected...' error).
+
+```bash
+melos test-integration -- -d iPhone
+```
+
+It can be applied to run other commands that includes `test-integration` command:
+
+```bash
+melos test -- -d iPhone
+melos check-all -- -d iPhone
+```
+
+### Versioning and publish packages
+
+Usually you don't need to version and publish packages manually. All heavy lifting is done by CI/CD. But if you need to do it manually, you can do it by running the following command:
+
+```bash
+# Bump version
+melos version
+# Publish packages
 melos publish-with-hooks
 ```
 

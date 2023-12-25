@@ -29,14 +29,43 @@ scripts:
     description: Prepare the project for hacking
     run: melos bs && melos get-pjsip && melos gen-ffi-bindings && melos build
 
-  publish-with-hooks:
-    description: Publish the project (melos don't support hooks for publish command)
-    run: bash scripts/pre-publish.sh && melos publish -y --no-dry-run && bash scripts/post-publish.sh
-
   analyze:
     description: Analyze the project
     exec: flutter analyze
     failFast: true
+
+  test:
+    description: Run all Dart, Flutter and integration tests for all packages in this project
+    run: melos run test-dart --no-select && melos run test-flutter --no-select && melos run test-integration --no-select -- $1
+
+  test-dart:
+    description: Run all Dart tests for all packages in this project
+    run: melos exec -c 1 --fail-fast -- "dart test test"
+    packageFilters:
+      flutter: false
+      dirExists: test
+
+  test-flutter:
+    description: Run all Flutter tests for all packages in this project
+    run: melos exec -c 1 --fail-fast -- "flutter test test"
+    packageFilters:
+      flutter: true
+      dirExists: test
+
+  test-integration:
+    description: Run all integration tests for all packages in this project
+    run: melos exec -c 1 --fail-fast -- "flutter test integration_test $1"
+    packageFilters:
+      flutter: true
+      dirExists: integration_test
+
+  check-all:
+    description: Run all checks for all packages in this project
+    run: melos analyze && melos test -- $1
+
+  publish-with-hooks:
+    description: Publish the project (melos don't support hooks for publish command)
+    run: bash scripts/pre-publish.sh && melos publish -y --no-dry-run && bash scripts/post-publish.sh
 
 command:
   clean:

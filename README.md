@@ -96,6 +96,8 @@ Alternatively, you can run static analysis and tests for all packages:
 ```bash
 # Static analysis:
 melos analyze
+# Check code formatting:
+melos check-format
 # Tests:
 melos test
 ```

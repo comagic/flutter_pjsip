@@ -91,7 +91,7 @@ Before committing your changes, you **should** run static analysis and all tests
 melos check-all
 ```
 
-Alternatively, you can run static analysis and tests for a all packages:
+Alternatively, you can run static analysis and tests for all packages:
 
 ```bash
 # Static analysis:

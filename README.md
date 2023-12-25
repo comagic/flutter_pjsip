@@ -82,6 +82,16 @@ Before committing your changes, you **should** run static analysis for all packa
 melos run analyze
 ```
 
+### Publish packages
+
+To publish all packages, you need to run the following command:
+
+```bash
+melos publish-with-hooks
+```
+
+Yeah, melos don't support hooks for publish command, so we need to use `publish-with-hooks` command instead, which runs `pre-publish.sh` and `post-publish.sh` scripts.
+
 ### Clean up everything
 
 In case of any issues, you can clean up everything and start from scratch. This will clean up all packages and remove all generated files:

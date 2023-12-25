@@ -29,6 +29,10 @@ scripts:
     description: Prepare the project for hacking
     run: melos bs && melos get-pjsip && melos gen-ffi-bindings && melos build
 
+  publish-with-hooks:
+    description: Publish the project (melos don't support hooks for publish command)
+    run: bash scripts/pre-publish.sh && melos publish -y --no-dry-run && bash scripts/post-publish.sh
+
   analyze:
     description: Analyze the project
     exec: flutter analyze

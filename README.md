@@ -33,6 +33,15 @@ multiple packages, inspired by Lerna for JavaScript.
 dart pub global activate melos
 ```
 
+If you have `Can't load Kernel binary: Invalid SDK hash.` error when running `melos` command, you need to run the following command:
+
+```bash
+dart pub global deactivate melos
+dart pub global activate melos
+```
+
+This will reinstall melos and fix the issue.
+
 ### Prepare the project for hacking: easy way
 
 By running the following command, melos will boostrap the project, get PJSIP source code, generate FFI bindings, and build PJSIP for all platforms:

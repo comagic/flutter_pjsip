@@ -35,5 +35,4 @@ packages/flutter_pjsip/target
 # Melos related
 **/pubspec_overrides.yaml
 
-packages/flutter_pjsip/example/
 packages/flutter_pjsip/src/

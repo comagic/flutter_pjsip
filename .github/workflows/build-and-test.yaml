@@ -1,0 +1,72 @@
+name: Build and test package
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    # runs the CI everyday at 10AM
+    - cron: "0 10 * * *"
+
+jobs:
+  semantic_pull_request:
+    # Semantic Pull Request https://workflows.vgv.dev/docs/workflows/semantic_pull_request
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.5'
+          channel: 'stable'
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+      - uses: bluefireteam/melos-action@v3
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r26b
+          link-to-sdk: true
+      - name: build libraries
+        run: melos prepare
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+  analyze:
+    needs: [build]
+    runs-on: macos-latest
+    steps:
+      - name: run dart analyze
+        run: melos analyze
+
+  check-format:
+    needs: [build]
+    runs-on: macos-latest
+    steps:
+      - name: run dart format check
+        run: melos check-format
+
+  tests:
+    needs: [build]
+    runs-on: macos-latest
+    steps:
+      - name: run dart tests
+        run: melos test-dart
+      - name: run flutter tests
+        run: melos test-flutter
+
+  tests_integration_ios:
+    needs: [build]
+    runs-on: macos-latest
+
+  tests_integration_android:
+    needs: [build]
+    runs-on: macos-latest

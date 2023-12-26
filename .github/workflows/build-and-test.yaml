@@ -21,56 +21,25 @@ jobs:
 
   build:
     runs-on: macos-latest
+    timeout-minutes: 120
     steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.16.5'
-          channel: 'stable'
-          cache: true
-          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
-      - uses: bluefireteam/melos-action@v3
-      - uses: nttld/setup-ndk@v1
-        id: setup-ndk
-        with:
-          ndk-version: r26b
-          link-to-sdk: true
-      - name: build libraries
-        run: melos prepare
-        env:
-          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+      - name: build
+        uses: ./.github/workflows/build.yaml
 
-  analyze:
-    needs: [build]
-    runs-on: macos-latest
-    steps:
-      - name: run dart analyze
-        run: melos analyze
-
-  check-format:
-    needs: [build]
-    runs-on: macos-latest
-    steps:
       - name: run dart format check
         run: melos check-format
 
-  tests:
-    needs: [build]
-    runs-on: macos-latest
-    steps:
+      - name: analyze
+        run: melos analyze
+
       - name: run dart tests
         run: melos test-dart
+
       - name: run flutter tests
         run: melos test-flutter
 
-  tests_integration_ios:
-    needs: [build]
-    runs-on: macos-latest
-    steps:
-      - run: echo 'TODO'
+      - name: run iOS integration tests
+        run: echo 'TODO iOS'
 
-  tests_integration_android:
-    needs: [build]
-    runs-on: macos-latest
-    steps:
-      - run: echo 'TODO'
+      - name: run Android integration tests
+        run: echo 'TODO Android'

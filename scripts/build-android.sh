@@ -17,8 +17,12 @@ cd src/pjsip
 # Clean archives
 find . -type f -name "*.a" -delete
 
-# TODO: Should be corrected for use with CI
-export ANDROID_NDK_ROOT="$ANDROID_HOME/ndk/25.1.8937393"
+if [[ -z "${ANDROID_NDK_HOME-}" ]]; then
+  echo "ANDROID_NDK_HOME is not set"
+  exit 1
+fi
+
+export ANDROID_NDK_ROOT="$ANDROID_NDK_HOME"
 
 # Make armv7 Android libraries
 TARGET_ABI=armeabi-v7a ./configure-android --use-ndk-cflags

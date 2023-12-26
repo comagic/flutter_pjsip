@@ -1,3 +1,7 @@
+## 1.1.0-dev.1
+
+ - **FEAT**: add tests (stubs) and docs about tests.
+
 ## 1.1.0-dev.0
 
  - **REFACTOR**: add melos, change project structure.

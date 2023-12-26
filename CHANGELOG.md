@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_pjsip` - `v0.0.2-dev.1`](#flutter_pjsip---v002-dev1)
+ - [`flutter_pjsip_example` - `v1.1.0-dev.1`](#flutter_pjsip_example---v110-dev1)
+ - [`flutter_pjsip_workspace` - `v0.0.2-dev.1`](#flutter_pjsip_workspace---v002-dev1)
+
+---
+
+#### `flutter_pjsip` - `v0.0.2-dev.1`
+
+ - **FEAT**: add tests (stubs) and docs about tests.
+
+#### `flutter_pjsip_example` - `v1.1.0-dev.1`
+
+ - **FEAT**: add tests (stubs) and docs about tests.
+
+#### `flutter_pjsip_workspace` - `v0.0.2-dev.1`
+
+ - **FIX**: typo in README.md.
+ - **FIX**: add melos-related issue doc in README.md.
+ - **FEAT**: add code formatting check to melos.yaml.
+ - **FEAT**: add tests (stubs) and docs about tests.
+ - **FEAT**: add publish-with-hooks command to melos.yaml.
+
+## 0.0.2-dev.1
+
+ - **FIX**: typo in README.md.
+ - **FIX**: add melos-related issue doc in README.md.
+ - **FEAT**: add code formatting check to melos.yaml.
+ - **FEAT**: add tests (stubs) and docs about tests.
+ - **FEAT**: add publish-with-hooks command to melos.yaml.
+
+
 ## 2023-12-25
 
 ### Changes

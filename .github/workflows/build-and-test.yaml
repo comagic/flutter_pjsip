@@ -1,4 +1,4 @@
-name: Build and test package
+name: Build and test all
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -24,6 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: ./.github/workflows/get-flutter.yaml
+
       - name: run dart format check
         run: melos check-format
 
@@ -33,8 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: build
-        uses: ./.github/workflows/build.yaml
+      - uses: ./.github/workflows/build.yaml
 
       - name: analyze
         run: melos analyze

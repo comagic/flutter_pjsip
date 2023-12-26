@@ -8,7 +8,7 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 120
     steps:
-      - uses: ./.github/workflows/get-flutter.yaml
+      - uses: ./.github/actions/get-flutter.yaml
 
       - uses: nttld/setup-ndk@v1
         id: setup-ndk

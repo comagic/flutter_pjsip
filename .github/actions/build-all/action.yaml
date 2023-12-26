@@ -1,0 +1,20 @@
+name: Build all
+description: Build all
+
+runs:
+  using: "composite"
+  steps:
+    - uses: ./.github/workflows/get-flutter.yaml
+
+    - uses: nttld/setup-ndk@v1
+      id: setup-ndk
+      with:
+        ndk-version: r26b
+        link-to-sdk: true
+
+    - name: build libraries
+      shell: bash
+      run: melos prepare
+      env:
+        ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+

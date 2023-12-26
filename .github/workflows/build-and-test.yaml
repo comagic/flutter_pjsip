@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/get-flutter.yaml
+      - uses: ./.github/actions/get-flutter
 
       - name: run dart format check
         run: melos check-format
@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/build.yaml
+      - uses: ./.github/actions/build-all
 
       - name: analyze
         run: melos analyze

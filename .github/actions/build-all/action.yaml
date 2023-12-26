@@ -4,7 +4,7 @@ description: Build all
 runs:
   using: "composite"
   steps:
-    - uses: ./.github/workflows/get-flutter.yaml
+    - uses: ./.github/actions/get-flutter
 
     - uses: nttld/setup-ndk@v1
       id: setup-ndk

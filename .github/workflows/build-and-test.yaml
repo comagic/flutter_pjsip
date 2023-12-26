@@ -19,15 +19,22 @@ jobs:
     # Semantic Pull Request https://workflows.vgv.dev/docs/workflows/semantic_pull_request
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
-  build:
-    runs-on: macos-latest
-    timeout-minutes: 120
+  check_format:
+    runs-on: ubuntu-latest
     steps:
-      - name: build
-        uses: ./.github/workflows/build.yaml
+      - uses: actions/checkout@v4
 
       - name: run dart format check
         run: melos check-format
+
+  build_and_test:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: build
+        uses: ./.github/workflows/build.yaml
 
       - name: analyze
         run: melos analyze

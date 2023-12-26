@@ -1,6 +1,6 @@
 name: flutter_pjsip_workspace
 description: "Workspace project for PJSIP plugin for Flutter"
-version: 0.0.2-dev.1
+version: 0.0.2-dev.2
 homepage: https://github.com/comagic/flutter_pjsip
 publish_to: 'none'
 

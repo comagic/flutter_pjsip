@@ -15,6 +15,33 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_pjsip_workspace` - `v0.0.2-dev.2`](#flutter_pjsip_workspace---v002-dev2)
+
+---
+
+#### `flutter_pjsip_workspace` - `v0.0.2-dev.2`
+
+ - **FIX**: add example to pub.dev package.
+ - **FIX**: update .gitignore and .pubignore files.
+
+## 0.0.2-dev.2
+
+ - **FIX**: add example to pub.dev package.
+ - **FIX**: update .gitignore and .pubignore files.
+
+
+## 2023-12-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_pjsip` - `v0.0.2-dev.1`](#flutter_pjsip---v002-dev1)
  - [`flutter_pjsip_example` - `v1.1.0-dev.1`](#flutter_pjsip_example---v110-dev1)
  - [`flutter_pjsip_workspace` - `v0.0.2-dev.1`](#flutter_pjsip_workspace---v002-dev1)

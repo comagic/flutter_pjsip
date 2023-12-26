@@ -46,6 +46,15 @@ jobs:
       - name: run flutter tests
         run: melos test-flutter
 
+      - name: start iOS simulator
+        uses: futureware-tech/simulator-action@v3
+        with:
+          model: 'iPhone 14'
+          erase_before_boot: true
+          shutdown_after_job: true
+      - name: run iOS integration tests
+        run: melos test-integration -- -d iPhone
+
       - name: install Java (Android Gradle plugin requires Java 11 to run)
         uses: actions/setup-java@v4
         with:
@@ -65,12 +74,3 @@ jobs:
           script: |
             #!/usr/bin/env bash
             melos test-integration -- -d emulator
-
-      - name: start iOS simulator
-        uses: futureware-tech/simulator-action@v3
-        with:
-          model: 'iPhone 14'
-          erase_before_boot: true
-          shutdown_after_job: true
-      - name: run iOS integration tests
-        run: melos test-integration -- -d iPhone

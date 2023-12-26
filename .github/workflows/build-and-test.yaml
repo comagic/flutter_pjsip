@@ -60,6 +60,7 @@ jobs:
         with:
           api-level: 33
           target: google_apis
+          arch: x86_64
           ram-size: 1024M
           disk-size: 2048M
           emulator-options: -no-window -gpu swiftshader_indirect -no-boot-anim

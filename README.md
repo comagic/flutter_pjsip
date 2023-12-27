@@ -44,6 +44,8 @@ This will reinstall melos and fix the issue.
 
 ### Prepare the project for hacking: easy way
 
+Before you start hacking, you need to prepare the project and install Android NDK. Make shure that you have Android SDK installed and `ANDROID_HOME` environment variable is set. Also you have to set `ANDROID_NDK_HOME` environment variable to the path to Android NDK.
+
 By running the following command, melos will boostrap the project, get PJSIP source code, generate FFI bindings, and build PJSIP for all platforms:
 
 ```bash
@@ -91,11 +93,13 @@ Before committing your changes, you **should** run static analysis and all tests
 melos check-all
 ```
 
-Alternatively, you can run static analysis and tests for a all packages:
+Alternatively, you can run static analysis and tests for all packages:
 
 ```bash
 # Static analysis:
 melos analyze
+# Check code formatting:
+melos check-format
 # Tests:
 melos test
 ```
@@ -144,6 +148,14 @@ In case of any issues, you can clean up everything and start from scratch. This 
 ```bash
 melos clean
 ```
+
+You can also clean up working tree, but keep generated files (dart, binary libraries, etc):
+
+```bash
+melos clean-working-tree
+```
+
+This can be useful while preparing gh artifact or publishing packages.
 
 ## Project structure
 

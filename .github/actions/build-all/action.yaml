@@ -1,0 +1,11 @@
+name: Build all
+description: Build all
+
+runs:
+  using: "composite"
+  steps:
+    - uses: ./.github/actions/get-flutter
+
+    - name: build libraries
+      shell: bash
+      run: melos prepare

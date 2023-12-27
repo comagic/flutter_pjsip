@@ -1,3 +1,5 @@
+# Warning! Be sure to update .pubignore as well whenever you update this file.
+
 # Miscellaneous
 *.class
 *.log
@@ -41,3 +43,7 @@ packages/flutter_pjsip/android/libs
 
 # Melos related
 **/pubspec_overrides.yaml
+
+# Temporary copied files from the root directory
+packages/flutter_pjsip/LICENSE
+packages/flutter_pjsip/README.md

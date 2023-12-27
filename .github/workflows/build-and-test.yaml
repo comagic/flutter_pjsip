@@ -39,7 +39,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: build-${{ github.ref }}
+          name: build
           path: ./
           retention-days: 1
           compression-level: 2
@@ -52,7 +52,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: build-${{ github.ref }}
+          name: build
 
       - name: analyze
         run: melos analyze
@@ -65,7 +65,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: build-${{ github.ref }}
+          name: build
 
       - name: run dart tests
         run: melos test-dart
@@ -82,7 +82,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: build-${{ github.ref }}
+          name: build
 
       - name: start iOS simulator
         uses: futureware-tech/simulator-action@v3
@@ -102,7 +102,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: build-${{ github.ref }}
+          name: build
 
       - name: install Java (Android Gradle plugin requires Java 11 to run)
         uses: actions/setup-java@v4

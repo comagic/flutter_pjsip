@@ -48,11 +48,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: ./.github/actions/get-flutter
-
       - uses: actions/download-artifact@v4
         with:
           name: build
+
+      - uses: ./.github/actions/get-flutter
 
       - name: analyze
         run: melos analyze
@@ -61,11 +61,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: ./.github/actions/get-flutter
-
       - uses: actions/download-artifact@v4
         with:
           name: build
+
+      - uses: ./.github/actions/get-flutter
 
       - name: run dart tests
         run: melos test-dart
@@ -78,11 +78,11 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 120
     steps:
-      - uses: ./.github/actions/get-flutter
-
       - uses: actions/download-artifact@v4
         with:
           name: build
+
+      - uses: ./.github/actions/get-flutter
 
       - name: start iOS simulator
         uses: futureware-tech/simulator-action@v3
@@ -98,11 +98,11 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 120
     steps:
-      - uses: ./.github/actions/get-flutter
-
       - uses: actions/download-artifact@v4
         with:
           name: build
+
+      - uses: ./.github/actions/get-flutter
 
       - name: install Java (Android Gradle plugin requires Java 11 to run)
         uses: actions/setup-java@v4

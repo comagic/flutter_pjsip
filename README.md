@@ -1,3 +1,5 @@
+[![Build and test all](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml)
+
 # flutter_pjsip
 
 This is a Flutter plugin for the [PJSIP](https://www.pjsip.org/) library. It

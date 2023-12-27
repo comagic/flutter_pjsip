@@ -149,6 +149,14 @@ In case of any issues, you can clean up everything and start from scratch. This 
 melos clean
 ```
 
+You can also clean up working tree, but keep generated files (dart, binary libraries, etc):
+
+```bash
+melos clean-working-tree
+```
+
+This can be useful while preparing gh artifact or publishing packages.
+
 ## Project structure
 
 We forced to move actual project to `packages/flutter_pjsip` folder because of Melos limitations (it's not compatible with the latest `file` package which is used by `ffi` package). So, we have the following structure:

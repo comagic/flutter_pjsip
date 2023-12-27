@@ -72,6 +72,10 @@ scripts:
     description: Publish the project (melos don't support hooks for publish command)
     run: bash scripts/pre-publish.sh && melos publish -y --no-dry-run && bash scripts/post-publish.sh
 
+  clean-working-tree:
+    description: Clean working tree, leave only resulting files
+    run: bash scripts/clean-working-tree.sh
+
 command:
   clean:
     hooks:

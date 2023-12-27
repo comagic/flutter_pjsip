@@ -15,3 +15,5 @@ rm -rf packages/flutter_pjsip/target
 rm -rf packages/flutter_pjsip/android/libs
 rm -rf packages/flutter_pjsip/ios/Frameworks
 
+rm -rf packages/flutter_pjsip/LICENSE
+rm -rf packages/flutter_pjsip/README.md

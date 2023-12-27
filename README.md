@@ -33,7 +33,18 @@ multiple packages, inspired by Lerna for JavaScript.
 dart pub global activate melos
 ```
 
+If you have `Can't load Kernel binary: Invalid SDK hash.` error when running `melos` command, you need to run the following command:
+
+```bash
+dart pub global deactivate melos
+dart pub global activate melos
+```
+
+This will reinstall melos and fix the issue.
+
 ### Prepare the project for hacking: easy way
+
+Before you start hacking, you need to prepare the project and install Android NDK. Make shure that you have Android SDK installed and `ANDROID_HOME` environment variable is set. Also you have to set `ANDROID_NDK_HOME` environment variable to the path to Android NDK.
 
 By running the following command, melos will boostrap the project, get PJSIP source code, generate FFI bindings, and build PJSIP for all platforms:
 
@@ -54,33 +65,81 @@ Here `bs` means `bootstrap`.
 Then you need to get PJSIP source code:
 
 ```bash
-melos run get-pjsip
+melos get-pjsip
 ```
 
 Next step is to generate FFI bindings:
 
 ```bash
-melos run gen-ffi-bindings
+melos gen-ffi-bindings
 ```
 
 Now you ready to build the project. You can build PJSIP for all platforms at once or for a specific platform:
 
 ```bash
 # All platforms:
-melos run build
+melos build
 # iOS:
-melos run build-ios
+melos build-ios
 # Android:
-melos run build-android
+melos build-android
 ```
 
-### Analyze all packages
+### Analyze and test all packages
 
-Before committing your changes, you **should** run static analysis for all packages:
+Before committing your changes, you **should** run static analysis and all tests for all packages:
 
 ```bash
-melos run analyze
+melos check-all
 ```
+
+Alternatively, you can run static analysis and tests for all packages:
+
+```bash
+# Static analysis:
+melos analyze
+# Check code formatting:
+melos check-format
+# Tests:
+melos test
+```
+
+Also you can run test separately:
+
+```bash
+# Dart tests (but there is no Dart tests yet):
+melos test-dart
+# Flutter tests
+melos test-flutter
+# Integration tests
+melos test-integration
+```
+
+Intergation tests can be run **on one of you devices**! So, make sure that you have at least one device connected to your computer. If you have multiple devices connected, you can specify device ID (elsewise, you will get 'More than one device connected...' error).
+
+```bash
+melos test-integration -- -d iPhone
+```
+
+It can be applied to run other commands that includes `test-integration` command:
+
+```bash
+melos test -- -d iPhone
+melos check-all -- -d iPhone
+```
+
+### Versioning and publish packages
+
+Usually you don't need to version and publish packages manually. All heavy lifting is done by CI/CD. But if you need to do it manually, you can do it by running the following command:
+
+```bash
+# Bump version
+melos version
+# Publish packages
+melos publish-with-hooks
+```
+
+Yeah, melos don't support hooks for publish command, so we need to use `publish-with-hooks` command instead, which runs `pre-publish.sh` and `post-publish.sh` scripts.
 
 ### Clean up everything
 
@@ -89,6 +148,14 @@ In case of any issues, you can clean up everything and start from scratch. This 
 ```bash
 melos clean
 ```
+
+You can also clean up working tree, but keep generated files (dart, binary libraries, etc):
+
+```bash
+melos clean-working-tree
+```
+
+This can be useful while preparing gh artifact or publishing packages.
 
 ## Project structure
 

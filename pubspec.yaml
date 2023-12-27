@@ -1,4 +1,8 @@
-name: my_project_workspace
+name: flutter_pjsip_workspace
+description: "Workspace project for PJSIP plugin for Flutter"
+version: 0.0.2-dev.2
+homepage: https://github.com/comagic/flutter_pjsip
+publish_to: 'none'
 
 environment:
   sdk: '>=2.18.0 <3.0.0'

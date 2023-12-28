@@ -1,6 +1,6 @@
-[![Build and test all](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml)
-
 # flutter_pjsip
+
+[![Build and test all](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml)
 
 This is a Flutter plugin for the [PJSIP](https://www.pjsip.org/) library. It
 provides a Dart API for the PJSIP library, and it is implemented using Dart FFI.

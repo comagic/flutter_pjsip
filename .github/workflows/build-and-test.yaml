@@ -1,7 +1,7 @@
 name: Build and test all
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-build-and-test
   cancel-in-progress: true
 
 on:
@@ -77,8 +77,8 @@ jobs:
         run: melos test-flutter
 
   integration_tests_ios:
-    needs: build
     runs-on: macos-latest
+    needs: build
     timeout-minutes: 120
     steps:
       - uses: actions/download-artifact@v4
@@ -97,8 +97,8 @@ jobs:
         run: melos test-integration -- -d iPhone
 
   integration_tests_android:
-    needs: build
     runs-on: macos-latest
+    needs: build
     timeout-minutes: 120
     steps:
       - uses: actions/download-artifact@v4

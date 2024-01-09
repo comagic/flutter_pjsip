@@ -1,5 +1,9 @@
 name: Bump version, put tags and create PR
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-version-bump
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
     inputs:

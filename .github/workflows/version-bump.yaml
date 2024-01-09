@@ -1,5 +1,3 @@
-# Checkout, bump version, create PR and push tags
-
 name: Bump version, put tags and create PR
 
 on:

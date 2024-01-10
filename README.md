@@ -35,18 +35,9 @@ multiple packages, inspired by Lerna for JavaScript.
 dart pub global activate melos
 ```
 
-If you have `Can't load Kernel binary: Invalid SDK hash.` error when running `melos` command, you need to run the following command:
-
-```bash
-dart pub global deactivate melos
-dart pub global activate melos
-```
-
-This will reinstall melos and fix the issue.
-
 ### Prepare the project for hacking: easy way
 
-Before you start hacking, you need to prepare the project and install Android NDK. Make shure that you have Android SDK installed and `ANDROID_HOME` environment variable is set. Also you have to set `ANDROID_NDK_HOME` environment variable to the path to Android NDK.
+Before you start hacking, you need to prepare the project and install Android NDK - the minimum recommended version is 25.1.8937393. Make sure that you have Android SDK installed and `ANDROID_HOME` environment variable is set. Also you have to set `ANDROID_NDK_HOME` environment variable to the path to Android NDK.
 
 By running the following command, melos will boostrap the project, get PJSIP source code, generate FFI bindings, and build PJSIP for all platforms:
 
@@ -86,6 +77,23 @@ melos build-ios
 # Android:
 melos build-android
 ```
+
+### Troubleshooting
+
+#### Melos
+
+If you have `Can't load Kernel binary: Invalid SDK hash.` error when running `melos` command, you need to run the following command:
+
+```bash
+dart pub global deactivate melos
+dart pub global activate melos
+```
+
+This will reinstall melos and fix the issue.
+
+#### Anroid NDK version
+
+If you have `configure-android error: compiler not found, please check environment settings (TARGET ABI, etc)` error, make sure you have the minimum recommended version installed.
 
 ### Analyze and test all packages
 

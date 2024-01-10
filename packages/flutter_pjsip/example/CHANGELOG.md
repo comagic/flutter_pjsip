@@ -1,3 +1,8 @@
+## 1.1.0-dev.2
+
+ - **FIX**: add test for native function call (#10).
+ - **FIX**: use ANDROID_NDK_HOME env variable.
+
 ## 1.1.0-dev.1
 
  - **FEAT**: add tests (stubs) and docs about tests.

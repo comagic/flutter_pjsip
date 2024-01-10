@@ -59,5 +59,7 @@ jobs:
 
       - uses: ./.github/actions/get-flutter
 
+      - uses: dart-lang/setup-dart@v1 # required for pub.dev authentication
+
       - name: Publish to pub.dev
         run: melos publish-with-hooks

@@ -151,6 +151,14 @@ melos publish-with-hooks
 
 Yeah, melos don't support hooks for publish command, so we need to use `publish-with-hooks` command instead, which runs `pre-publish.sh` and `post-publish.sh` scripts.
 
+For creating an archive with compiled libraries, you can run the following command:
+
+```bash
+melos create-lib-archive
+```
+
+It will create `lib.tar.gz` archive in `packages/flutter_pjsip/target` folder. **Note**: this command doesn't build libraries, so you need to run `melos build` command before. This command is useful for creating github release artifact.
+
 ### Clean up everything
 
 In case of any issues, you can clean up everything and start from scratch. This will clean up all packages and remove all generated files:

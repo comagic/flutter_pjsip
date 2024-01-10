@@ -34,11 +34,16 @@ jobs:
         with:
           name: build
 
+      - uses: ./.github/actions/get-flutter
+
+      - name: Create archive with compiled libraries
+        run: melos create-lib-archive
+
       - uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           artifactErrorsFailBuild: true
-          artifacts: "packages/flutter_pjsip/*.*"
+          artifacts: "packages/flutter_pjsip/target/lib.tar.gz"
 
   # publish_pub_dev_release:
   #   runs-on: ubuntu-latest

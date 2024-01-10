@@ -76,6 +76,10 @@ scripts:
     description: Clean working tree, leave only resulting files
     run: bash scripts/clean-working-tree.sh
 
+  create-lib-archive:
+    description: Create archive with compiled libraries
+    run: bash scripts/create-lib-archive.sh
+
 command:
   clean:
     hooks:

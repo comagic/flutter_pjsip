@@ -1,5 +1,9 @@
 name: Publish release
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-build-and-publish
+  cancel-in-progress: true
+
 on:
   push:
     tags:

@@ -21,6 +21,11 @@ compiler-opts:
     - "-Isrc/pjsip/pjnath/include"
     - "-DPJ_IS_LITTLE_ENDIAN 1"
     - "-DPJ_IS_BIG_ENDIAN 0"
+    - '-Wno-nullability-completeness'
+
+# TODO: I have no idea how to get rid of"unknown platform 'visionos' in availability macro" warning
+ignore-source-errors: true
+
 structs:
   rename:
     # We should rename the struct 'param' to avoid conflict with the class the field 'param' of the class 'pjmedia_codec_fmtp'.
@@ -43,3 +48,5 @@ preamble: |
 comments:
   style: any
   length: full
+
+

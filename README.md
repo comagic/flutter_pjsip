@@ -1,5 +1,7 @@
 # flutter_pjsip
 
+[![Build and test all](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/comagic/flutter_pjsip/actions/workflows/build-and-test.yaml)
+
 This is a Flutter plugin for the [PJSIP](https://www.pjsip.org/) library. It
 provides a Dart API for the PJSIP library, and it is implemented using Dart FFI.
 
@@ -33,18 +35,9 @@ multiple packages, inspired by Lerna for JavaScript.
 dart pub global activate melos
 ```
 
-If you have `Can't load Kernel binary: Invalid SDK hash.` error when running `melos` command, you need to run the following command:
-
-```bash
-dart pub global deactivate melos
-dart pub global activate melos
-```
-
-This will reinstall melos and fix the issue.
-
 ### Prepare the project for hacking: easy way
 
-Before you start hacking, you need to prepare the project and install Android NDK. Make shure that you have Android SDK installed and `ANDROID_HOME` environment variable is set. Also you have to set `ANDROID_NDK_HOME` environment variable to the path to Android NDK.
+Before you start hacking, you need to prepare the project and install Android NDK - the minimum recommended version is 25.1.8937393. Make sure that you have Android SDK installed and `ANDROID_HOME` environment variable is set. Also you have to set `ANDROID_NDK_HOME` environment variable to the path to Android NDK.
 
 By running the following command, melos will boostrap the project, get PJSIP source code, generate FFI bindings, and build PJSIP for all platforms:
 
@@ -84,6 +77,23 @@ melos build-ios
 # Android:
 melos build-android
 ```
+
+### Troubleshooting
+
+#### Melos
+
+If you have `Can't load Kernel binary: Invalid SDK hash.` error when running `melos` command, you need to run the following command:
+
+```bash
+dart pub global deactivate melos
+dart pub global activate melos
+```
+
+This will reinstall melos and fix the issue.
+
+#### Anroid NDK version
+
+If you have `configure-android error: compiler not found, please check environment settings (TARGET ABI, etc)` error, make sure you have the minimum recommended version installed.
 
 ### Analyze and test all packages
 
@@ -140,6 +150,14 @@ melos publish-with-hooks
 ```
 
 Yeah, melos don't support hooks for publish command, so we need to use `publish-with-hooks` command instead, which runs `pre-publish.sh` and `post-publish.sh` scripts.
+
+For creating an archive with compiled libraries, you can run the following command:
+
+```bash
+melos create-lib-archive
+```
+
+It will create `lib.tar.gz` archive in `packages/flutter_pjsip/target` folder. **Note**: this command doesn't build libraries, so you need to run `melos build` command before. This command is useful for creating github release artifact.
 
 ### Clean up everything
 

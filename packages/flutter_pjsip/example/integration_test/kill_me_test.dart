@@ -11,7 +11,10 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
 
-      expect(true, true);
+      expect(
+        find.textContaining('This calls a native function'),
+        findsOneWidget,
+      );
     });
   });
 }

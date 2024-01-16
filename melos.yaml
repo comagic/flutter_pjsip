@@ -13,6 +13,13 @@ scripts:
     description: Generate FFI bindings
     run: bash scripts/gen-ffi-bindings.sh
 
+  codegen:
+    description: Generate code
+    exec: dart run build_runner build
+    failFast: true
+    packageFilters:
+      dependsOn: "build_runner"
+
   build-ios:
     description: Build the project for iOS
     run: bash scripts/build-ios.sh
@@ -27,7 +34,7 @@ scripts:
 
   prepare:
     description: Prepare the project for hacking
-    run: melos bs && melos get-pjsip && melos gen-ffi-bindings && melos build
+    run: melos bs && melos get-pjsip && melos gen-ffi-bindings && melos codegen && melos build
 
   analyze:
     description: Analyze the project

@@ -5,3 +5,5 @@ include: package:very_good_analysis/analysis_options.yaml
 analyzer:
   exclude:
     - '**generated.dart'
+  errors:
+    invalid_annotation_target: ignore

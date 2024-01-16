@@ -32,6 +32,8 @@ migrate_working_dir/
 
 # Generated files
 *_generated.dart
+*.freezed.dart
+*.g.dart
 
 # Working directories
 packages/flutter_pjsip/src/pjsip

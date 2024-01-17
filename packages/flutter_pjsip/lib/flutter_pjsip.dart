@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:flutter_pjsip/flutter_pjsip_bindings_generated.dart';
+import 'package:flutter_pjsip/bindings/bindings.dart';
 
 // ignore: public_member_api_docs
 void pjStart() {

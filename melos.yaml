@@ -17,6 +17,7 @@ scripts:
     description: Generate code
     exec: dart run build_runner build
     failFast: true
+    concurrency: 1
     packageFilters:
       dependsOn: "build_runner"
 

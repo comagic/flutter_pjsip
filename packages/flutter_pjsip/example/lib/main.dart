@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_pjsip/flutter_pjsip.dart' as flutter_pjsip;
+import 'package:flutter_pjsip_example/workers/sum_worker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,16 +18,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late int sumResult;
-  late Future<int> sumAsyncResult;
+  int? firstSumResult;
+  int? secondSumResult;
+  bool isCalculating = true;
 
   @override
   void initState() {
     super.initState();
-    sumResult = flutter_pjsip.sum(1, 2);
-    sumAsyncResult = flutter_pjsip.sumAsync(3, 4);
-
+    initCalculateWorker();
     flutter_pjsip.pjStart();
+  }
+
+  Future<void> initCalculateWorker() async {
+    final worker = await SumWorker.spawn();
+    final firstSum = await worker.getSum(1, 2);
+    final secondSum = await worker.getSum(3, 4);
+
+    setState(() {
+      firstSumResult = firstSum;
+      secondSumResult = secondSum;
+      isCalculating = false;
+    });
   }
 
   @override
@@ -53,22 +65,21 @@ class _MyAppState extends State<MyApp> {
                 ),
                 spacerSmall,
                 Text(
-                  'sum(1, 2) = $sumResult',
+                  !isCalculating
+                      ? 'background isolate sum(1, 2) = '
+                          '$firstSumResult'
+                      : 'calculating...',
                   style: textStyle,
                   textAlign: TextAlign.center,
                 ),
                 spacerSmall,
-                FutureBuilder<int>(
-                  future: sumAsyncResult,
-                  builder: (BuildContext context, AsyncSnapshot<int> value) {
-                    final displayValue =
-                        (value.hasData) ? value.data : 'loading';
-                    return Text(
-                      'await sumAsync(3, 4) = $displayValue',
-                      style: textStyle,
-                      textAlign: TextAlign.center,
-                    );
-                  },
+                Text(
+                  !isCalculating
+                      ? 'background isolate sum(3, 4) = '
+                          '$secondSumResult'
+                      : 'calculating...',
+                  style: textStyle,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

@@ -8,22 +8,29 @@ output: 'lib/bindings/flutter_pjsip_bindings_generated.dart'
 headers:
   entry-points:
     - 'src/flutter_pjsip.h'
-    - "src/pjsip/pjsip/include/pjsua-lib/pjsua.h"
+    - 'src/pjsip/pjsip/include/pjsua-lib/pjsua.h'
+    - 'src/pjsip/pjsip/include/pjsip.h'
+    - 'src/pjsip/pjsip/include/pjsip/sip_transport.h'
+    - 'src/pjsip/pjlib/include/pj/sock.h'
   include-directives:
     - 'src/flutter_pjsip.h'
-    - "src/pjsip/pjsip/include/pjsua-lib/pjsua.h"
+    - 'src/pjsip/pjsip/include/pjsua-lib/pjsua.h'
+    - 'src/pjsip/pjsip/include/pjsip.h'
+    - 'src/pjsip/pjsip/include/pjsip/sip_transport.h'
+    - 'src/pjsip/pjlib/include/pj/sock.h'
 
 compiler-opts:
-    - "-Isrc/pjsip/pjsip/include"
-    - "-Isrc/pjsip/pjlib/include"
-    - "-Isrc/pjsip/pjlib-util/include"
-    - "-Isrc/pjsip/pjmedia/include"
-    - "-Isrc/pjsip/pjnath/include"
-    - "-DPJ_IS_LITTLE_ENDIAN 1"
-    - "-DPJ_IS_BIG_ENDIAN 0"
+    - '-Isrc/pjsip/pjsip/include/pjsip'
+    - '-Isrc/pjsip/pjsip/include'
+    - '-Isrc/pjsip/pjlib/include'
+    - '-Isrc/pjsip/pjlib-util/include'
+    - '-Isrc/pjsip/pjmedia/include'
+    - '-Isrc/pjsip/pjnath/include'
+    - '-DPJ_IS_LITTLE_ENDIAN 1'
+    - '-DPJ_IS_BIG_ENDIAN 0'
     - '-Wno-nullability-completeness'
 
-# TODO: I have no idea how to get rid of"unknown platform 'visionos' in availability macro" warning
+# TODO: I have no idea how to get rid of'unknown platform 'visionos' in availability macro' warning
 ignore-source-errors: true
 
 structs:

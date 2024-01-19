@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_pjsip/flutter_pjsip.dart' as flutter_pjsip;
+import 'package:logging/logging.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,15 +17,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late int sumResult;
-  late Future<int> sumAsyncResult;
 
   @override
   void initState() {
     super.initState();
-    sumResult = flutter_pjsip.sum(1, 2);
-    sumAsyncResult = flutter_pjsip.sumAsync(3, 4);
+    Logger.root.level = Level.ALL;
+    Logger.root.onRecord.listen((record) {
+      // ignore: avoid_print
+      print('${record.level.name}: ${record.time}: ${record.message}');
+    });
+    sumResult = flutter_pjsip.Pjsua.sum(1, 2);
 
-    flutter_pjsip.pjStart();
+    flutter_pjsip.Pjsua.pjStart();
   }
 
   @override
@@ -56,19 +58,6 @@ class _MyAppState extends State<MyApp> {
                   'sum(1, 2) = $sumResult',
                   style: textStyle,
                   textAlign: TextAlign.center,
-                ),
-                spacerSmall,
-                FutureBuilder<int>(
-                  future: sumAsyncResult,
-                  builder: (BuildContext context, AsyncSnapshot<int> value) {
-                    final displayValue =
-                        (value.hasData) ? value.data : 'loading';
-                    return Text(
-                      'await sumAsync(3, 4) = $displayValue',
-                      style: textStyle,
-                      textAlign: TextAlign.center,
-                    );
-                  },
                 ),
               ],
             ),

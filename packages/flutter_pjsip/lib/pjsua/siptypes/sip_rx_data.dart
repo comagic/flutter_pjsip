@@ -1,3 +1,5 @@
+import 'dart:ffi' as ffi;
+
 import 'package:flutter_pjsip/bindings/bindings.dart';
 import 'package:flutter_pjsip/pjsua/pjsua.dart';
 import 'package:flutter_pjsip/pjsua/utils/utils.dart';
@@ -22,17 +24,27 @@ sealed class SipRxData with _$SipRxData {
   }) = _SipRxData;
 
   /// Import from pjsip structure
-  factory SipRxData.fromPj(pjsip_rx_data rdata) {
+  factory SipRxData.fromPj(ffi.Pointer<pjsip_rx_data> rdata) {
+    const straddrBufLength = PJ_INET6_ADDRSTRLEN + 10;
+    final straddr = PCExtension.allocate(straddrBufLength);
+
+    final info = Pjsua.bindings.pjsip_rx_data_get_info(rdata).toDartString();
+
+    final wholeMsg = rdata.ref.msg_info.msg_buf.toDartString();
+
+    Pjsua.bindings.pj_sockaddr_print(
+      rdata.ref.pkt_info.src_addr as ffi.Pointer<pj_sockaddr_t>,
+      straddr,
+      straddrBufLength,
+      3,
+    );
+
+    final srcAddress = straddr.toDartString();
+
     return SipRxData(
-      // TODO(nesquikm): pjsip_rx_data_get_info should be called from native!
-      // info        = pjsip_rx_data_get_info(&rdata);
-      info: '',
-      wholeMsg: rdata.msg_info.msg_buf.toDartString(),
-      // TODO(nesquikm): pj_sockaddr_print should be called from native!
-      // char straddr[PJ_INET6_ADDRSTRLEN+10];
-      // pj_sockaddr_print(&rdata.pkt_info.src_addr, straddr,
-      // sizeof(straddr), 3);
-      srcAddress: '',
+      info: info,
+      wholeMsg: wholeMsg,
+      srcAddress: srcAddress,
     );
   }
 }

@@ -7,4 +7,22 @@ extension PCExtension on Pointer<Char> {
   String toDartString() {
     return cast<Utf8>().toDartString();
   }
+
+  /// Converts a Dart string to a pointer to a C-style string.
+  static Pointer<Char> fromDartString(String inputString) {
+    return inputString.toNativeUtf8().cast();
+  }
+
+  /// Allocates a pointer to a character with the specified length.
+  ///
+  /// The [length] parameter specifies the number of characters to allocate.
+  /// Returns a pointer to the allocated character.
+  static Pointer<Char> allocate(int length) {
+    return calloc<Char>(length + 1);
+  }
+
+  /// Frees the memory allocated for the pointer to a character.
+  void free() {
+    calloc.free(this);
+  }
 }

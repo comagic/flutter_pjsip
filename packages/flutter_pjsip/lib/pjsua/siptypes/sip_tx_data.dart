@@ -49,7 +49,11 @@ sealed class SipTxData with _$SipTxData {
           3,
         );
 
-        return straddr.toDartString();
+        final ret = straddr.toDartString();
+
+        straddr.free();
+
+        return ret;
       }
 
       return '';

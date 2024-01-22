@@ -9,12 +9,17 @@ extension PCExtension on Pointer<Char> {
   }
 
   /// Converts a Dart string to a pointer to a C-style string.
+  ///
+  /// WARNING: this method allocates memory for the pointer to a character.
+  /// You must call the [free] method to free the allocated memory.
   static Pointer<Char> fromDartString(String inputString) {
     return inputString.toNativeUtf8().cast();
   }
 
   /// Allocates a pointer to a character with the specified length.
   ///
+  /// WARNING: this method allocates memory for the pointer to a character.
+  /// You must call the [free] method to free the allocated memory.
   /// The [length] parameter specifies the number of characters to allocate.
   /// Returns a pointer to the allocated character.
   static Pointer<Char> allocate(int length) {

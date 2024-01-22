@@ -41,6 +41,8 @@ sealed class SipRxData with _$SipRxData {
 
     final srcAddress = straddr.toDartString();
 
+    straddr.free();
+
     return SipRxData(
       info: info,
       wholeMsg: wholeMsg,

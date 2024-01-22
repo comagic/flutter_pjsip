@@ -20,6 +20,8 @@ extension PjStrTExtension on pj_str_t {
 
   /// Creates a `pj_str_t` instance from a Dart [String].
   ///
+  /// WARNING: this method allocates memory for the `pj_str_t` instance and its
+  /// `ptr` field. You must call the [free] method to free the allocated memory.
   /// This method first converts the input [String] to a native UTF-8 string.
   /// Then, it allocates memory for a `pj_str_t` instance and sets its `ptr`
   /// field to point to the UTF-8 string and its `slen` field to the length
@@ -32,5 +34,15 @@ extension PjStrTExtension on pj_str_t {
     str.ref.ptr = utf8prt.cast();
     str.ref.slen = utf8prt.length;
     return str.ref;
+  }
+
+  /// Frees the memory allocated for the `pj_str_t` instance and its `ptr` field.
+  void free() {
+    malloc.free(ptr);
+    // TODO(nesquikm): I have no idea how to free the memory allocated for the
+    // `pj_str_t` instance itself. As long as we don't have a way to store the
+    // allocated Pointer<> in the pj_str_t instance (only str.ref), we can't
+    // free it.
+    // ..free(this);
   }
 }

@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:ffi' as ffi;
 import 'package:ffi/ffi.dart';
 
 import 'package:flutter_pjsip/bindings/bindings.dart';
@@ -30,13 +30,14 @@ extension PjStrTExtension on pj_str_t {
   static pj_str_t fromDartString(String inputString) {
     final utf8prt = inputString.toNativeUtf8();
 
-    final str = malloc.allocate<pj_str_t>(sizeOf<pj_str_t>());
+    final str = malloc.allocate<pj_str_t>(ffi.sizeOf<pj_str_t>());
     str.ref.ptr = utf8prt.cast();
     str.ref.slen = utf8prt.length;
     return str.ref;
   }
 
-  /// Frees the memory allocated for the `pj_str_t` instance and its `ptr` field.
+  /// Frees the memory allocated for the `pj_str_t` instance and its `ptr`
+  /// field.
   void free() {
     malloc.free(ptr);
     // TODO(nesquikm): I have no idea how to free the memory allocated for the

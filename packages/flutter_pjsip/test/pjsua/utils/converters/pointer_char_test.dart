@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:ffi' as ffi;
 
 import 'package:flutter_pjsip/pjsua/utils/utils.dart';
 import 'package:test/test.dart';

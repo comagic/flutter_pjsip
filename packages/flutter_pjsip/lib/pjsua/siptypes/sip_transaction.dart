@@ -7,7 +7,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sip_transaction.freezed.dart';
 
-/// This describes presence status.
+/// This structure describes SIP transaction object. It corresponds to the
+/// [pjsip_transaction] structure in PJSIP library.
 @freezed
 sealed class SipTransaction with _$SipTransaction {
   const factory SipTransaction({

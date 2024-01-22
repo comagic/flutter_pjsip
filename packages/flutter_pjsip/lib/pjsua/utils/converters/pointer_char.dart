@@ -1,18 +1,18 @@
-import 'dart:ffi';
-import 'package:ffi/ffi.dart';
+import 'dart:ffi' as ffi;
+import 'package:ffi/ffi.dart' as ffipkg;
 
 /// Extension methods for the `Pointer<Char>` type.
-extension PCExtension on Pointer<Char> {
+extension PCExtension on ffi.Pointer<ffi.Char> {
   /// Converts the `Pointer<Char>` instance to a Dart [String].
   String toDartString() {
-    return cast<Utf8>().toDartString();
+    return cast<ffipkg.Utf8>().toDartString();
   }
 
   /// Converts a Dart string to a pointer to a C-style string.
   ///
   /// WARNING: this method allocates memory for the pointer to a character.
   /// You must call the [free] method to free the allocated memory.
-  static Pointer<Char> fromDartString(String inputString) {
+  static ffi.Pointer<ffi.Char> fromDartString(String inputString) {
     return inputString.toNativeUtf8().cast();
   }
 
@@ -22,12 +22,12 @@ extension PCExtension on Pointer<Char> {
   /// You must call the [free] method to free the allocated memory.
   /// The [length] parameter specifies the number of characters to allocate.
   /// Returns a pointer to the allocated character.
-  static Pointer<Char> allocate(int length) {
-    return calloc<Char>(length + 1);
+  static ffi.Pointer<ffi.Char> allocate(int length) {
+    return ffipkg.calloc<ffi.Char>(length + 1);
   }
 
   /// Frees the memory allocated for the pointer to a character.
   void free() {
-    calloc.free(this);
+    ffipkg.calloc.free(this);
   }
 }

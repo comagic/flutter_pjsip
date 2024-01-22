@@ -12,6 +12,7 @@ headers:
     - 'src/pjsip/pjsip/include/pjsip.h'
     - 'src/pjsip/pjsip/include/pjsip/sip_transport.h'
     - 'src/pjsip/pjlib/include/pj/sock.h'
+    - 'src/pjsip/pjlib/include/pj/types.h'
 
   include-directives:
     - 'src/flutter_pjsip.h'
@@ -19,6 +20,7 @@ headers:
     - 'src/pjsip/pjsip/include/pjsip.h'
     - 'src/pjsip/pjsip/include/pjsip/sip_transport.h'
     - 'src/pjsip/pjlib/include/pj/sock.h'
+    - 'src/pjsip/pjlib/include/pj/types.h'
 
 compiler-opts:
     - '-Isrc/pjsip/pjsip/include/pjsip'

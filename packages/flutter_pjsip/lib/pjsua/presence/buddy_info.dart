@@ -1,6 +1,5 @@
 import 'package:flutter_pjsip/bindings/bindings.dart';
-import 'package:flutter_pjsip/pjsua/enums/enums.dart';
-import 'package:flutter_pjsip/pjsua/presence/presence_status.dart';
+import 'package:flutter_pjsip/pjsua/pjsua.dart';
 import 'package:flutter_pjsip/pjsua/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

@@ -45,8 +45,8 @@ extension PjStrTExtension on pj_str_t {
   /// Frees the memory allocated for the `pj_str_t` instance and its `ptr`
   /// field.
   void free() {
-    ffipkg.malloc.free(ptr);
     final str = _allocatedPointers.remove(ptr);
+    ffipkg.malloc.free(ptr);
     if (str != null) {
       ffipkg.malloc.free(str);
     }

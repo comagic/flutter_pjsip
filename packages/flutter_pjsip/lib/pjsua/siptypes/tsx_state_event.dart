@@ -8,7 +8,7 @@ part 'tsx_state_event.freezed.dart';
 sealed class TsxStateEvent with _$TsxStateEvent {
   const factory TsxStateEvent({
     /// Event source.
-    required TsxStateEventSrc src,
+    required TsxStateEventSrc? src,
 
     /// The transaction.
     required SipTransaction tsx,

@@ -25,4 +25,34 @@ sealed class SipEventBody with _$SipEventBody {
     /// User event.
     required UserEvent user,
   }) = _SipEventBody;
+
+  const factory SipEventBody.timer({
+    /// Timer event.
+    required TimerEvent timer,
+  }) = _SipEventBodyTimer;
+
+  const factory SipEventBody.tsxState({
+    /// Transaction state has changed event.
+    required TsxStateEvent tsxState,
+  }) = _SipEventBodyTsxState;
+
+  const factory SipEventBody.txMsg({
+    /// Message transmission event.
+    required TxMsgEvent txMsg,
+  }) = _SipEventBodyTxMsg;
+
+  const factory SipEventBody.rxMsg({
+    /// Message arrival event.
+    required RxMsgEvent rxMsg,
+  }) = _SipEventBodyRxMsg;
+
+  const factory SipEventBody.txError({
+    /// Transmission error event.
+    required TxErrorEvent txError,
+  }) = _SipEventBodyTxError;
+
+  const factory SipEventBody.user({
+    /// User event.
+    required UserEvent user,
+  }) = _SipEventBodyUser;
 }

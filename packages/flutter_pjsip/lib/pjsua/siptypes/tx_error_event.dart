@@ -8,9 +8,9 @@ part 'tx_error_event.freezed.dart';
 sealed class TxErrorEvent with _$TxErrorEvent {
   const factory TxErrorEvent({
     /// The transmit data.
-    required SipTxData tdata,
+    required SipTxData? tdata,
 
     /// The transaction.
-    required SipTransaction tsx,
+    required SipTransaction? tsx,
   }) = _TxErrorEvent;
 }

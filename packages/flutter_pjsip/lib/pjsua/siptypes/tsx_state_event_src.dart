@@ -26,4 +26,29 @@ sealed class TsxStateEventSrc with _$TsxStateEventSrc {
     /// Generic data.
     required GenericData data,
   }) = _TsxStateEventSrc;
+
+  const factory TsxStateEventSrc.tdata({
+    /// The outgoing message.
+    required SipTxData tdata,
+  }) = _TsxStateEventSrcTdata;
+
+  const factory TsxStateEventSrc.rdata({
+    /// The incoming message.
+    required SipRxData rdata,
+  }) = _TsxStateEventSrcRdata;
+
+  const factory TsxStateEventSrc.status({
+    /// Transport error status.
+    required Dartpj_status_t status,
+  }) = _TsxStateEventSrcStatus;
+
+  const factory TsxStateEventSrc.timer({
+    /// The timer.
+    required TimerEntry timer,
+  }) = _TsxStateEventSrcTimer;
+
+  const factory TsxStateEventSrc.user({
+    /// Generic data.
+    required GenericData data,
+  }) = _TsxStateEventSrcUser;
 }

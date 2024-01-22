@@ -8,6 +8,6 @@ part 'tx_msg_event.freezed.dart';
 sealed class TxMsgEvent with _$TxMsgEvent {
   const factory TxMsgEvent({
     /// The transmit data buffer.
-    required SipTxData rdata,
+    required SipTxData tdata,
   }) = _TxMsgEvent;
 }

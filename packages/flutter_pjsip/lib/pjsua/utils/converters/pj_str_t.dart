@@ -5,6 +5,9 @@ import 'package:flutter_pjsip/bindings/bindings.dart';
 
 /// Extension methods for the `pj_str_t` structure.
 extension PjStrTExtension on pj_str_t {
+  static final Map<ffi.Pointer<ffi.Char>, ffi.Pointer<pj_str_t>>
+      _allocatedPointers = {};
+
   /// Converts the `pj_str_t` instance to a Dart [String].
   ///
   /// If the length of the string (`slen`) is greater than 0, it converts
@@ -33,6 +36,9 @@ extension PjStrTExtension on pj_str_t {
     final str = ffipkg.malloc.allocate<pj_str_t>(ffi.sizeOf<pj_str_t>());
     str.ref.ptr = utf8prt.cast();
     str.ref.slen = utf8prt.length;
+
+    _allocatedPointers[str.ref.ptr] = str;
+
     return str.ref;
   }
 
@@ -40,10 +46,9 @@ extension PjStrTExtension on pj_str_t {
   /// field.
   void free() {
     ffipkg.malloc.free(ptr);
-    // TODO(nesquikm): I have no idea how to free the memory allocated for the
-    // `pj_str_t` instance itself. As long as we don't have a way to store the
-    // allocated Pointer<> in the pj_str_t instance (only str.ref), we can't
-    // free it.
-    // ..free(this);
+    final str = _allocatedPointers.remove(ptr);
+    if (str != null) {
+      ffipkg.malloc.free(str);
+    }
   }
 }

@@ -1,3 +1,6 @@
+// Can't be imported as ffi because of generated code
+import 'dart:ffi';
+
 import 'package:flutter_pjsip/bindings/bindings.dart';
 import 'package:flutter_pjsip/pjsua/pjsua.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,12 +18,12 @@ sealed class TsxStateEventSrc with _$TsxStateEventSrc {
     required SipTxData tdata,
 
     /// The timer.
-    // required TimerEntry timer,
+    required TimerEntry timer,
 
     /// Transport error status.
     required Dartpj_status_t status,
 
     /// Generic data.
-    // required GenericData data,
+    required GenericData data,
   }) = _TsxStateEventSrc;
 }

@@ -1,5 +1,5 @@
 import 'dart:ffi' as ffi;
-import 'package:ffi/ffi.dart';
+import 'package:ffi/ffi.dart' as ffipkg;
 
 import 'package:flutter_pjsip/bindings/bindings.dart';
 
@@ -12,7 +12,7 @@ extension PjStrTExtension on pj_str_t {
   /// If the length of the string is 0 or less, it returns an empty [String].
   String toDartString() {
     if (slen > 0) {
-      return ptr.cast<Utf8>().toDartString();
+      return ptr.cast<ffipkg.Utf8>().toDartString();
     }
 
     return '';
@@ -30,7 +30,7 @@ extension PjStrTExtension on pj_str_t {
   static pj_str_t fromDartString(String inputString) {
     final utf8prt = inputString.toNativeUtf8();
 
-    final str = malloc.allocate<pj_str_t>(ffi.sizeOf<pj_str_t>());
+    final str = ffipkg.malloc.allocate<pj_str_t>(ffi.sizeOf<pj_str_t>());
     str.ref.ptr = utf8prt.cast();
     str.ref.slen = utf8prt.length;
     return str.ref;
@@ -39,7 +39,7 @@ extension PjStrTExtension on pj_str_t {
   /// Frees the memory allocated for the `pj_str_t` instance and its `ptr`
   /// field.
   void free() {
-    malloc.free(ptr);
+    ffipkg.malloc.free(ptr);
     // TODO(nesquikm): I have no idea how to free the memory allocated for the
     // `pj_str_t` instance itself. As long as we don't have a way to store the
     // allocated Pointer<> in the pj_str_t instance (only str.ref), we can't

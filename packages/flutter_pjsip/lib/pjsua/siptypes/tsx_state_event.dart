@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tsx_state_event.freezed.dart';
 
-/// This structure describes transaction state event source.
+/// This structure describes transaction state changed event.
 @freezed
 sealed class TsxStateEvent with _$TsxStateEvent {
   const factory TsxStateEvent({

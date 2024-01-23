@@ -30,7 +30,7 @@ extension PjStrTExtension on pj_str_t {
   /// field to point to the UTF-8 string and its `slen` field to the length
   /// of the UTF-8 string.
   /// Finally, it returns the `pj_str_t` instance.
-  static pj_str_t fromDartString(String inputString) {
+  static ffi.Pointer<pj_str_t> fromDartString(String inputString) {
     final utf8prt = inputString.toNativeUtf8();
 
     final str = ffipkg.malloc.allocate<pj_str_t>(ffi.sizeOf<pj_str_t>());
@@ -39,7 +39,7 @@ extension PjStrTExtension on pj_str_t {
 
     _allocatedPointers[str.ref.ptr] = str;
 
-    return str.ref;
+    return str;
   }
 
   /// Frees the memory allocated for the `pj_str_t` instance and its `ptr`

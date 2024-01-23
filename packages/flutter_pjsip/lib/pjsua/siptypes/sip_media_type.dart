@@ -19,6 +19,8 @@ sealed class SipMediaType with _$SipMediaType {
     required String subtype,
   }) = _SipMediaType;
 
+  const SipMediaType._();
+
   /// Import from pjsip structure
   factory SipMediaType.fromPj(ffi.Pointer<pjsip_media_type> prm) {
     return SipMediaType(
@@ -33,8 +35,8 @@ sealed class SipMediaType with _$SipMediaType {
     final pjMt = ffipkg.calloc
         .allocate<pjsip_media_type>(ffi.sizeOf<pjsip_media_type>());
 
-    pjMt.ref.type = PjStrTExtension.fromDartString(type);
-    pjMt.ref.subtype = PjStrTExtension.fromDartString(subtype);
+    pjMt.ref.type = PjStrTExtension.fromDartString(type).ref;
+    pjMt.ref.subtype = PjStrTExtension.fromDartString(subtype).ref;
 
     return pjMt;
   }

@@ -3,6 +3,7 @@ export 'sip_event.dart';
 export 'sip_event_body.dart';
 export 'sip_header.dart';
 export 'sip_media_type.dart';
+export 'sip_multipart_part.dart';
 export 'sip_rx_data.dart';
 export 'sip_transaction.dart';
 export 'sip_tx_data.dart';

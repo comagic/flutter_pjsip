@@ -16,6 +16,11 @@ extension PCExtension on ffi.Pointer<ffi.Char> {
     return inputString.toNativeUtf8().cast();
   }
 
+  /// Returns the length of the specified UTF-8 string.
+  static int nativeUtf8Length(String inputString) {
+    return inputString.toNativeUtf8().length;
+  }
+
   /// Allocates a pointer to a character with the specified length.
   ///
   /// WARNING: this method allocates memory for the pointer to a character.

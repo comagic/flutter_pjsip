@@ -22,10 +22,10 @@ sealed class SipMediaType with _$SipMediaType {
   const SipMediaType._();
 
   /// Import from pjsip structure
-  factory SipMediaType.fromPj(ffi.Pointer<pjsip_media_type> prm) {
+  factory SipMediaType.fromPj(pjsip_media_type prm) {
     return SipMediaType(
-      type: prm.ref.type.toDartString(),
-      subtype: prm.ref.subtype.toDartString(),
+      type: prm.type.toDartString(),
+      subtype: prm.subtype.toDartString(),
     );
   }
 

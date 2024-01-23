@@ -84,3 +84,6 @@ sealed class SipHeader with _$SipHeader {
     return pjHdr;
   }
 }
+
+/// A list of [SipHeader]
+typedef SipHeaderList = List<SipHeader>;

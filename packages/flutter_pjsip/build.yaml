@@ -3,5 +3,4 @@ targets:
     sources:
       exclude:
         # Exclude symlinks for the IOS build
-        - example/ios/.symlinks
-        - flutter_pjsip/example/ios/.symlinks
+        - example/ios/.symlinks/**

@@ -1,6 +1,7 @@
 {
   "search.useIgnoreFiles": false,
   "files.associations": {
-    "string": "cpp"
+    "string": "cpp",
+    "vector": "cpp"
   }
 }

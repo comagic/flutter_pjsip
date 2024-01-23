@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:ffi' as ffi;
 import 'dart:io';
 import 'package:flutter_pjsip/bindings/bindings.dart';
 import 'package:logging/logging.dart';
@@ -25,19 +25,19 @@ class LibLoader {
     if (_bindings == null) {
       _log.fine('Loading $_libName library...');
 
-      DynamicLibrary dylib;
+      ffi.DynamicLibrary dylib;
       final start = DateTime.now();
 
       try {
         dylib = () {
           if (Platform.isMacOS || Platform.isIOS) {
-            return DynamicLibrary.open('$_libName.framework/$_libName');
+            return ffi.DynamicLibrary.open('$_libName.framework/$_libName');
           }
           if (Platform.isAndroid || Platform.isLinux) {
-            return DynamicLibrary.open('lib$_libName.so');
+            return ffi.DynamicLibrary.open('lib$_libName.so');
           }
           if (Platform.isWindows) {
-            return DynamicLibrary.open('$_libName.dll');
+            return ffi.DynamicLibrary.open('$_libName.dll');
           }
           throw UnsupportedError(
             'Unknown platform: ${Platform.operatingSystem}',

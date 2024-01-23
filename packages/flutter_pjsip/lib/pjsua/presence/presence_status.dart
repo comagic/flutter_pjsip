@@ -1,4 +1,4 @@
-import 'package:flutter_pjsip/pjsua/enums/enums.dart';
+import 'package:flutter_pjsip/pjsua/pjsua.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'presence_status.freezed.dart';

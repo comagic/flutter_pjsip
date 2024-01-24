@@ -48,8 +48,6 @@ void main() {
   });
 }
 
-
-
 // import 'dart:ffi' as ffi;
 // import 'package:ffi/ffi.dart' as ffipkg;
 // import 'package:flutter_pjsip/bindings/bindings.dart';

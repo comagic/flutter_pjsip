@@ -7,7 +7,6 @@ export 'sip_multipart_part.dart';
 export 'sip_rx_data.dart';
 export 'sip_transaction.dart';
 export 'sip_tx_data.dart';
-export 'socket_address.dart';
 export 'timer_event.dart';
 export 'tsx_state_event.dart';
 export 'tsx_state_event_src.dart';

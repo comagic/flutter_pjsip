@@ -23,7 +23,7 @@ sealed class SipHeader with _$SipHeader {
 
   /// Import from pjsip structure
   factory SipHeader.fromPj(ffi.Pointer<pjsip_hdr> hdr) {
-    var len = 0;
+    var len = -1;
     ffi.Pointer<ffi.Char> buf = ffi.nullptr;
 
     for (var bufSize = 256;

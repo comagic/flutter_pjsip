@@ -21,3 +21,7 @@ FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b) {
 #endif
   return a + b;
 }
+
+pj_sockaddr *helper_rdata_pkt_info_src_addr_pointer(pjsip_rx_data *rdata) {
+  return &rdata->pkt_info.src_addr;
+}

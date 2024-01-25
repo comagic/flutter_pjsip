@@ -23,6 +23,20 @@ else()
   message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
 endif()
 
+target_include_directories(flutter_pjsip PRIVATE
+  "pjsip/pjlib/include"
+  "pjsip/pjsip/include/pjsip"
+  "pjsip/pjsip/include"
+  "pjsip/pjlib-util/include"
+  "pjsip/pjmedia/include"
+  "pjsip/pjnath/include"
+)
+
+target_compile_definitions(flutter_pjsip PRIVATE
+  PJ_IS_LITTLE_ENDIAN=0
+  PJ_IS_BIG_ENDIAN=1
+)
+
 target_link_libraries(flutter_pjsip PUBLIC
   -Wl,--whole-archive
   "${TARGET_DIR}/libpjsua-${ARCH_SUFFIX}"

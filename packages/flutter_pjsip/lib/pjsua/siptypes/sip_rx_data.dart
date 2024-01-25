@@ -33,7 +33,7 @@ sealed class SipRxData with _$SipRxData {
     final wholeMsg = rdata.ref.msg_info.msg_buf.toDartString();
 
     Pjsua.bindings.pj_sockaddr_print(
-      rdata.ref.pkt_info.src_addr as ffi.Pointer<pj_sockaddr_t>,
+      Pjsua.bindings.helper_rdata_pkt_info_src_addr_pointer(rdata).cast(),
       straddr,
       straddrBufLength,
       3,

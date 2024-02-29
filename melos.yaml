@@ -29,9 +29,13 @@ scripts:
     description: Build the project for Android
     run: bash scripts/build-android.sh
 
+  build-macos:
+    description: Build the project for MacOS
+    run: bash scripts/build-macos.sh
+
   build:
     description: Build the project
-    run: melos build-ios && melos build-android
+    run: melos build-ios && melos build-android && melos build-macos
 
   prepare:
     description: Prepare the project for hacking

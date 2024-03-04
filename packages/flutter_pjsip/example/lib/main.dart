@@ -27,8 +27,7 @@ class _MyAppState extends State<MyApp> {
       print('${record.level.name}: ${record.time}: ${record.message}');
     });
     sumResult = flutter_pjsip.Pjsua.sum(1, 2);
-
-    flutter_pjsip.Pjsua.pjStart();
+    flutter_pjsip.Pjsua.pjCreate();
   }
 
   @override

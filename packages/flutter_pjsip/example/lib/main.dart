@@ -27,7 +27,9 @@ class _MyAppState extends State<MyApp> {
       print('${record.level.name}: ${record.time}: ${record.message}');
     });
     sumResult = flutter_pjsip.Pjsua.sum(1, 2);
-    flutter_pjsip.Pjsua.pjCreate();
+    flutter_pjsip.Pjsua.start('Kukuk', 6000);
+    flutter_pjsip.Pjsua.register("gigadroid", "sip.antisip.com", "Test1234");
+    flutter_pjsip.Pjsua.call("gigadroid2@sip.antisip.com");
   }
 
   @override

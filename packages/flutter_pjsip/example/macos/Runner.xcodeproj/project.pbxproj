@@ -120,7 +120,6 @@
 				2BAB34868F61BAFD965B5385 /* Pods-RunnerTests.release.xcconfig */,
 				3E3AADB8675C4B137F544ECF /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -706,6 +705,11 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/DebugProfile.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/flutter_pjsip/flutter_pjsip.framework/Headers\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/flutter_pjsip/Headers\"",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

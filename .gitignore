@@ -41,6 +41,7 @@ packages/flutter_pjsip/target
 
 # Compiled libraries
 packages/flutter_pjsip/ios/Frameworks
+packages/flutter_pjsip/macos/Frameworks
 packages/flutter_pjsip/android/libs
 
 # Melos related
